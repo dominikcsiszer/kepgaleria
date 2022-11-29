@@ -8,7 +8,7 @@ function Kep(props) {
 
     return (
         <div className="kep" onClick={kattintas}>
-            <img className='kep-img' src={props.kepAdat.kep}></img>
+            <img className='kep-img' src={props.kepAdat.kep} alt='Kép'></img>
             <h3>Cím: {props.kepAdat.cim}</h3>
             <p>{props.kepAdat.leiras}</p>
         </div>

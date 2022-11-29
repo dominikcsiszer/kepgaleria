@@ -1,8 +1,9 @@
 import './App.css';
 
 import Kep from './Kep'
+import {useState} from 'react'
 
-const konyv = [
+const kepek = [
   {
     id: 1,
     cim: "Első kép",
@@ -41,8 +42,28 @@ const konyv = [
 ]
 
 function App() {
+
   function kattintasKepre(adat) {
     console.log(adat)
+  }
+
+  const [kep, setKep] = useState(kepek[0])
+  const [index, setindex] = useState(0)
+
+  function kattintasBalra() {
+    if(index > 0) {
+      setindex(index-1)
+      console.log(index)
+      setKep(kepek[index])
+    }
+  }
+
+  function kattintasJobbra() {
+    if(index < kepek.length-1) {
+      setindex(index+1)
+      console.log(index)
+      setKep(kepek[index])
+    }
   }
 
   return (
@@ -51,9 +72,9 @@ function App() {
             <h2>Képgaléria</h2>
         </header>
         <article className='kepek'>
-          {konyv.map((kepAdat, index) => {
-            return ( <Kep kepAdat={kepAdat} key={index} kattintasKepre={kattintasKepre}></Kep>)
-          })}
+        <i class="fa-solid fa-arrow-left" onClick={kattintasBalra}></i>
+            <Kep kepAdat={kep} kattintasKepre={kattintasKepre}></Kep>
+          <i class="fa-solid fa-arrow-right" onClick={kattintasJobbra}></i>
         </article>
         <footer>
             Csiszi
