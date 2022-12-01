@@ -12,10 +12,18 @@ body {
   margin-bottom: 2rem;
 }
 
+.fo-kep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
 .kepek {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 2rem;
 }
 .kepek i {
@@ -23,6 +31,24 @@ body {
   cursor: pointer;
 }
 
+.mini-kepek {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.mini-kepek .kep {
+  max-height: 150px !important;
+  min-height: 150px !important;
+  max-width: 100px;
+  overflow: hidden;
+}
+.mini-kepek .kep:hover {
+  background-color: rgb(243, 243, 243);
+}
+.mini-kepek .kep-img {
+  max-width: 100px;
+}
 @media screen and (max-width: 400px) {
   .konyvek {
     grid-template-columns: auto;

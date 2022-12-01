@@ -43,27 +43,24 @@ const kepek = [
 
 function App() {
 
-  function kattintasKepre(adat) {
-    console.log(adat)
-  }
-
   const [kep, setKep] = useState(kepek[0])
   const [index, setindex] = useState(0)
 
+  function kattintasKepre(adat) {
+    setKep(kepek[adat-1])
+    setindex(adat-1)
+  }
+
   function kattintasBalra() {
-    if(index > 0) {
-      setindex(index-1)
-      console.log(index)
-      setKep(kepek[index])
-    }
+    if(index > 0) setindex(index-1)
+    console.log(index)
+    setKep(kepek[index])
   }
 
   function kattintasJobbra() {
-    if(index < kepek.length-1) {
-      setindex(index+1)
-      console.log(index)
-      setKep(kepek[index])
-    }
+    if(index < kepek.length-1) setindex(index+1)
+    console.log(index)
+    setKep(kepek[index])
   }
 
   return (
@@ -72,9 +69,17 @@ function App() {
             <h2>Képgaléria</h2>
         </header>
         <article className='kepek'>
-        <i class="fa-solid fa-arrow-left" onClick={kattintasBalra}></i>
-            <Kep kepAdat={kep} kattintasKepre={kattintasKepre}></Kep>
-          <i class="fa-solid fa-arrow-right" onClick={kattintasJobbra}></i>
+          <div className='fo-kep'>
+            <i class="fa-solid fa-arrow-left" onClick={kattintasBalra}></i>
+              <Kep kepAdat={kep} kattintasKepre={kattintasKepre}></Kep>
+            <i class="fa-solid fa-arrow-right" onClick={kattintasJobbra}></i>
+          </div>
+
+          <div className='mini-kepek'>
+            {kepek.map((kepek, index) => {
+              return (<Kep kepAdat={kepek} kattintasKepre={kattintasKepre}></Kep>)
+            })}
+          </div>
         </article>
         <footer>
             Csiszi
